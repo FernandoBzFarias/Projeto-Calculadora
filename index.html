@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calculadora inteligente</title>
     <style>
+
      *{
         padding: 0px;
         margin: 0px;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Georgia, 'Times New Roman', Times, serif;
         box-sizing: border-box;
      }
 
@@ -26,52 +27,84 @@
         width:400px;
         height: 500px;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: flex-end;
         align-items: center;
         gap: 20px;
+        border-radius: 10px;
+        box-shadow: 0.5px 0.5px 0.5px 0.5px rgb(199, 192, 192);
+        padding-bottom: 30px;
      }
 
-     main div {
-           
-             width: 150px;
-             height: 150px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: black;
-            font-weight: bold;
-            font-size: 16px;
-        }
+     .linha{
+      display: flex;
+      gap: 20px;
+     }
+
+     .operacao{
+       width: 150px;
+       height: 100px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       color: black;
+       font-weight: bold;
+       font-size: 16px;
+       border-radius: 5px;
+       box-shadow: 0.5px 0.5px 0.5px 0.5px rgb(199, 192, 192);
+     }
+
+     .operacao:active{
+      filter: brightness(1.2);
+     }
+
+     div#soma:hover{
+      background-color: rgb(231, 126, 143);
+     }
+     
+     div#subtracao:hover{
+      background-color: rgb(119, 119, 238);
+     }
+   
+     div#divisao:hover{
+      background-color: rgb(243, 187, 84);
+     }
+
+     div#multiplicacao:hover{
+      background-color: rgb(240, 126, 126) ;
+     }
 
      div#soma{
-      
-        background-color: pink;
+        background-color: rgb(216, 71, 95);
      }
 
      div#subtracao{
-        
         background-color: blue;
      }
      
      div#divisao{
-        
         background-color: orange;
      }
 
      div#multiplicacao{
-        
         background-color: brown;
      }
 
     </style>
 </head>
+
 <body>
     <main>
-        <div id="soma">soma</div>
-        <div id="subtracao">subtração</div>
-        <div id="divisao">divisão</div>
-        <div id="multiplicacao">multiplicação</div>
+      <div class="linha">
+        <div class="operacao" id="soma">soma</div>
+        <div class="operacao" id="subtracao">subtração</div>
+      </div>
+      <div class="linha">   
+        <div class="operacao" id="divisao">divisão</div>
+        <div class="operacao" id="multiplicacao">multiplicação</div>
+      </div>
+      
+
     </main>
 </body>
 </html>
