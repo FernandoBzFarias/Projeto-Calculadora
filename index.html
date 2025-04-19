@@ -6,6 +6,16 @@
     <title>calculadora inteligente</title>
     <style>
 
+   input[type="number"]::-webkit-outer-spin-button,
+   input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+   }
+
+   input[type="number"] {
+    -moz-appearance: textfield;
+   }
+
      *{
         padding: 0px;
         margin: 0px;
@@ -14,17 +24,15 @@
      }
 
      body{
-       background:linear-gradient(to bottom, #a49ebd, #5b499b);
-        
+        background:linear-gradient(to bottom, #a49ebd, #5b499b);
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh; 
-
      }
 
      main{
-        background-color: white;
+        background-color: #f9f6ff;
         margin: auto;
         width:400px;
         height: 500px;
@@ -35,15 +43,15 @@
         gap: 20px;
         border-radius: 10px;
         box-shadow: 0.5px 0.5px 0.5px 0.5px rgb(199, 192, 192);
-       padding: 30px 20px 20px 20px;
+        padding: 30px 20px 20px 20px;
      }
 
-       h1{
+      h1 {
          color: rgb(0, 0, 0) ;
          text-align: center;
          font-size: 29px;
          margin-bottom: 100px;
-         background-color: rgb(111, 111, 165);
+         background-color:  #745fc0;
          padding: 8px 16px;
          border-radius: 5px;
          width: 60%;
@@ -52,8 +60,7 @@
       form{
          display: flex;
          gap: 10px;
-         margin-top: -80px;
-         
+         margin-top: -80px; 
       }
 
       input{
@@ -61,8 +68,6 @@
          padding: 9px;
          text-align: center;
          background-color: rgb(230, 230, 230);
-        
-         
       }
 
      .linha{
@@ -81,43 +86,55 @@
        font-size: 16px;
        border-radius: 10px;
        box-shadow: 0.5px 0.5px 0.5px 0.5px rgb(199, 192, 192);
-       
      }
 
      .operacao:active{
       filter: brightness(1.2);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
      }
 
      div#soma:hover{
-      background-color: rgb(231, 126, 143);
+      background-color:#f7b41a;
      }
      
-     div#subtracao:hover{
-      background-color: rgb(119, 119, 238);
+     div#subtrair:hover{
+      background-color:#254ebe;
      }
    
      div#divisao:hover{
-      background-color: rgb(243, 187, 84);
+      background-color:#f02c2c;
      }
 
-     div#multiplicacao:hover{
-      background-color: rgb(240, 126, 126) ;
+     div#multiplicar:hover{
+      background-color:#80a51c;
      }
 
      div#soma{
-        background-color: rgb(216, 71, 95);
+      background-color: #ffd166;
      }
 
-     div#subtracao{
-        background-color: blue;
+     div#subtrair{
+      background-color:	#4d7cff;
      }
      
      div#divisao{
-        background-color: orange;
+       background-color: #ff6b6b ;
      }
 
-     div#multiplicacao{
-        background-color: brown;
+     div#multiplicar{
+      background-color: #bce058;
+     }
+
+     div#resultado{
+         color: rgb(0, 0, 0);
+         background-color: #745fc0;
+         width: 350px;
+         text-align: center;
+         height: 42px;
+         font-size: 18px;
+         font-weight: bold;
+         border-radius: 8px;
      }
 
     </style>
@@ -129,19 +146,83 @@
          <h1>calculadora</h1>
 
          <form action="calcular">
-          <input type="number1" placeholder="digite um numero"> 
-          <input type="number2" placeholder="digite um numero">
+          <input type="number" name="nm1" id="numer1"  placeholder="digite um numero" step="any"> 
+          <input type="number" name="nm2" id="numer2" placeholder="digite um numero" step="any">
          </form>
-
+         
      
       <div class="linha">
         <div class="operacao" id="soma">soma</div>
-        <div class="operacao" id="subtracao">subtração</div>
+        <div class="operacao" id="subtrair">subtração</div>
       </div>
       <div class="linha">   
         <div class="operacao" id="divisao">divisão</div>
-        <div class="operacao" id="multiplicacao">multiplicação</div>
+        <div class="operacao" id="multiplicar">multiplicação</div>
       </div>
+
+      <div id="resultado">resultado</div>
     </main>
+
+    <script>
+      function somar() {
+         var n1= window.document.getElementById("numer1")
+         var n2= window.document.getElementById("numer2")
+         var s= window.document.getElementById("soma")
+         var tn1= Number(n1.value)
+         var tn2= Number(n2.value)
+         var s= tn1+tn2
+         resultado.innerText= "resultado da soma= " + s.toFixed(2)
+         n1.value = "";
+         n2.value = "";
+      }
+      document.getElementById("soma").addEventListener("click", somar);
+
+      function subtrair() {
+         var n1= window.document.getElementById("numer1")
+         var n2= window.document.getElementById("numer2")
+         var s= window.document.getElementById("subtrair")
+         var tn1= Number(n1.value)
+         var tn2= Number(n2.value)
+         var s= tn1 - tn2
+         resultado.innerText= "resultado da subtração= " + s.toFixed(2)
+         n1.value = "";
+         n2.value = "";
+      }
+      document.getElementById("subtrair").addEventListener("click", subtrair);
+
+      function multiplicar() {
+         var n1= window.document.getElementById("numer1")
+         var n2= window.document.getElementById("numer2")
+         var s= window.document.getElementById("multiplicar")
+         var tn1= Number(n1.value)
+         var tn2= Number(n2.value)
+         var s= tn1 * tn2
+         resultado.innerText= "resultado da multiplicacao= " + s.toFixed(2)
+         n1.value = "";
+         n2.value = "";
+      }
+      document.getElementById("multiplicar").addEventListener("click", multiplicar);
+
+      function dividir() {
+         var n1= window.document.getElementById("numer1")
+         var n2= window.document.getElementById("numer2")
+         var s= window.document.getElementById("divisao")
+         var tn1= Number(n1.value)
+         var tn2= Number(n2.value)
+         var s= tn1 / tn2
+
+         if (tn2 === 0) {
+         resultado.innerText = "Erro: divisão por zero!";
+         return;
+         }
+         resultado.innerText= "resultado da divisao= " + s
+         n1.value = "";
+         n2.value = "";
+      }
+      document.getElementById("divisao").addEventListener("click", dividir);
+
+      
+      
+    </script>
 </body>
 </html>
